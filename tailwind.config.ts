@@ -19,6 +19,9 @@ const config = {
     },
     extend: {
       colors: {
+        // white: {
+        //   1: '#FFFFFF'
+        // },
         dark: {
           1: '#1C1F2E',
           2: '#161925',
