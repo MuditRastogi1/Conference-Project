@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: "Confinity",
   description: "Video calling App",
   icons: {
-    icon: "/icons/logo.svg",
+    icon: "/icons/confinity.svg",
   },
 };
 
@@ -27,14 +27,14 @@ export default function RootLayout({
         appearance={{
           layout: {
             socialButtonsVariant: "iconButton",
-            logoImageUrl: "/icons/yoom-logo.svg",
+            logoImageUrl: "/icons/confinity.svg",
           },
           variables: {
-            colorText: "#fff",
+            colorText: "#000000",
             colorPrimary: "#0E78F9",
-            colorBackground: "#1C1F2E",
-            colorInputBackground: "#252A41",
-            colorInputText: "#fff",
+            colorBackground: "#ffff",
+            colorInputBackground: "#ffff",
+            colorInputText: "#000000",
           },
         }}
       >

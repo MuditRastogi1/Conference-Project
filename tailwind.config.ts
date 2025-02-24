@@ -63,6 +63,9 @@ const config = {
       backgroundImage: {
         hero: "url('/images/hero-background.png')",
       },
+      fontFamily: {
+        'monotype-corsiva': ['Monotype Corsiva', 'cursive'],
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],
