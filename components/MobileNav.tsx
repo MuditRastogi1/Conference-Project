@@ -29,7 +29,7 @@ const MobileNav = () => {
               src="/icons/confinity.svg"
               width={32}
               height={32}
-              alt="yoom logo"
+              alt="Confinity logo"
             />
             <p className="text-[26px] font-monotype-corsiva text-white">Confinity</p>
           </Link>

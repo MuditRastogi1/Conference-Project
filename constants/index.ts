@@ -21,9 +21,19 @@ export const sidebarLinks = [
     label: 'Recordings',
   },
   {
-    imgURL: '/icons/add-personal.svg',
+    imgURL: '/icons/personal-room.svg',
     route: '/personal-room',
     label: 'Personal Room',
+  },
+  {
+    imgURL: '/icons/add-paper.svg',
+    route: '/publish-paper',
+    label: 'Publish Paper',
+  },
+  {
+    imgURL: '/icons/review.svg', // Add this icon to public/icons
+    route: '/review-paper',
+    label: 'Review Paper',
   },
 ];
 
