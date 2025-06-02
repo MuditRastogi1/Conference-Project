@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 
 const Sidebar = () => {
   const pathname = usePathname();
-  const { user, isLoaded } = useUser();
+  const { user } = useUser();
 
   const role = user?.publicMetadata.role;
 

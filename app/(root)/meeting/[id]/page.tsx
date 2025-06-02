@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useUser } from '@clerk/nextjs';
 import { StreamCall, StreamTheme } from '@stream-io/video-react-sdk';
-import { useParams, useSearchParams } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import { Loader } from 'lucide-react';
 
 import { useGetCallById } from '@/hooks/useGetCallById';

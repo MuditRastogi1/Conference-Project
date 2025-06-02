@@ -1,9 +1,9 @@
 "use client";
 
+import React from "react";
 import { useUser } from "@clerk/nextjs";
 import { useToast } from "@/components/ui/use-toast";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 
@@ -26,7 +26,6 @@ type Paper = {
 const PublishPaperPage = () => {
   const { user } = useUser();
   const { toast } = useToast();
-  const router = useRouter();
 
   const [title, setTitle] = useState("");
   const [abstract, setAbstract] = useState("");

@@ -1,16 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { connectToDatabase } from "@/lib/mongodb";
 import Paper from "@/models/Paper";
-import { GridFSBucket, ObjectId } from "mongodb";
-import { Readable } from "stream";
-
-async function buffer(readable: Readable) {
-  const chunks = [];
-  for await (const chunk of readable) {
-    chunks.push(chunk);
-  }
-  return Buffer.concat(chunks);
-}
+import { GridFSBucket } from "mongodb";
 
 export async function POST(req: NextRequest) {
   await connectToDatabase();
