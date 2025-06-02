@@ -67,7 +67,10 @@ const MeetingTypeList = () => {
 
   if (!client || !user) return <Loader />;
 
-  const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${callDetail?.id}`;
+  const meetingLink =
+    typeof window !== 'undefined' && callDetail?.id
+      ? `${window.location.origin}/meeting/${callDetail.id}`
+      : '';
 
   return (
     <section className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">

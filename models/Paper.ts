@@ -10,8 +10,9 @@ const PaperSchema = new Schema({
   title: String,
   abstract: String,
   authorId: String,
-  fileId: String, // GridFS file id
+  fileId: String,
   fileName: String,
+  assignedReviewerId: String, // to assign reviewer
   reviews: [ReviewSchema],
   createdAt: { type: Date, default: Date.now },
 });

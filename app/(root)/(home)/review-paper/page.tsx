@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useUser } from "@clerk/nextjs";
-import { useRouter } from "next/navigation";
 
 type Paper = {
   _id: string;
@@ -10,26 +9,22 @@ type Paper = {
   authorId: string;
   fileId: string;
   fileName: string;
+  assignedReviewerId?: string;
   reviews: { reviewerId: string; suggestion: string; createdAt: string }[];
 };
 
 const ReviewPaperPage = () => {
-  const { user, isLoaded } = useUser();
-  const router = useRouter();
+  const { user } = useUser();
   const [papers, setPapers] = useState<Paper[]>([]);
   const [suggestion, setSuggestion] = useState<{ [key: string]: string }>({});
 
   useEffect(() => {
-    if (isLoaded && user?.publicMetadata.role !== "reviewer") {
-      router.replace("/");
-    }
-  }, [isLoaded, user, router]);
-
-  useEffect(() => {
     fetch("/api/papers")
       .then(res => res.json())
-      .then(setPapers);
-  }, []);
+      .then(data => {
+        setPapers(data.filter((paper: Paper) => paper.assignedReviewerId === user?.id));
+      });
+  }, [user]);
 
   const handleSuggestion = async (paperId: string) => {
     await fetch(`/api/papers/${paperId}/review`, {
@@ -42,17 +37,18 @@ const ReviewPaperPage = () => {
     });
     setSuggestion(prev => ({ ...prev, [paperId]: "" }));
     alert("Suggestion submitted!");
-    // Optionally, refresh papers to show new review
     fetch("/api/papers")
       .then(res => res.json())
-      .then(setPapers);
+      .then(data => {
+        setPapers(data.filter((paper: Paper) => paper.assignedReviewerId === user?.id));
+      });
   };
 
   return (
     <section className="flex flex-col items-center justify-center min-h-screen text-white">
       <h1 className="text-3xl font-bold mb-6">Papers for Review</h1>
       <div className="w-full max-w-2xl space-y-6">
-        {papers.length === 0 && <p>No papers submitted yet.</p>}
+        {papers.length === 0 && <p>No papers assigned to you yet.</p>}
         {papers.map(paper => (
           <div key={paper._id} className="bg-dark-3 p-4 rounded-lg shadow">
             <h2 className="text-xl font-semibold">{paper.title}</h2>

@@ -53,7 +53,10 @@ const PersonalRoom = () => {
     router.push(`/meeting/${meetingId}?personal=true`);
   };
 
-  const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${meetingId}?personal=true`;
+  const meetingLink =
+    typeof window !== "undefined" && meetingId
+      ? `${window.location.origin}/meeting/${meetingId}?personal=true`
+      : "";
 
   return (
     <section className="flex size-full flex-col gap-10 text-white">
