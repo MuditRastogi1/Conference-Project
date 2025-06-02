@@ -4,12 +4,6 @@ import Paper from "@/models/Paper";
 import { GridFSBucket, ObjectId } from "mongodb";
 import { Readable } from "stream";
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
-
 async function buffer(readable: Readable) {
   const chunks = [];
   for await (const chunk of readable) {
